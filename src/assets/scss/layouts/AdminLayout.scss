@@ -1,0 +1,32 @@
+@import "../abstracts/abstracts";
+
+#main-content {
+  .content-wrapper {
+    height: calc(100vh);
+    display: flex;
+    .scrollbar-container {
+      width: 100%;
+      height: calc(100vh - 72px);
+    }
+    .scrollbar-container::-webkit-scrollbar {
+      display: none !important;
+    }
+    .content-layout {
+      width: 100%;
+      overflow-y: auto;
+      margin-top: 72px;
+      height: calc(100vh - 72px);
+    }
+    .content {
+      padding: 24px 28px 24px 38px;
+      width: 100%;
+      background-color: #fffcf4;
+      min-height: calc(100vh - 136px);
+    }
+    @include media-breakpoint-mobile-port {
+      .content {
+        padding: 16px 12px;
+      }
+    }
+  }
+}

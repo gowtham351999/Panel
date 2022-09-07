@@ -1,0 +1,39 @@
+@import "../../../assets/scss/abstracts/abstracts";
+
+.select-section {
+  margin-top: 32px;
+  label {
+    font-size: fontSize(14px);
+    color: $black-25;
+    line-height: 19px;
+  }
+  .Select--is-disabled {
+    border-radius: 4px;
+    font-size: fontSize(14px);
+    line-height: 18px;
+    color: $text-black-1a;
+    opacity: 0.9;
+    background-color: $white;
+    cursor: not-allowed;
+  }
+  /* the modification */
+  option:first-of-type {
+    display: none;
+  }
+  i {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    pointer-events: none;
+  }
+}
+
+.table-select_dropdown {
+  .select-section {
+    margin-top: 0;
+    width: 100%;
+    .Select__control {
+      height: 34px;
+    }
+  }
+}

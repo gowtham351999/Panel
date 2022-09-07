@@ -1,0 +1,132 @@
+@import "../../assets/scss/abstracts/abstracts";
+
+.detail-Box {
+  width: 100%;
+  min-width: 1120px;
+  background: rgb(131, 58, 180);
+  background: radial-gradient(
+    circle,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border-radius: 16px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
+  border: 1px solid transparent;
+  .userDetailHeader {
+    text-shadow: 1px 2px 3px grey;
+  }
+  .userDetailTitle {
+    text-shadow: 1px 2px 3px transparent;
+  }
+  .userDetailPara {
+    text-shadow: 0px 1px 2px grey;
+  }
+}
+
+.viewUserContainer {
+  width: 100%;
+  min-width: 500px;
+  background: rgb(131, 58, 180);
+  background: radial-gradient(
+    circle,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border-radius: 16px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
+  border: 1px solid transparent;
+}
+
+.addUser-BoxContainer-layout{
+  min-height: 100vh;
+  .addUser-BoxContainer {
+    width: 100%;
+    min-width: 900px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    .addUser-title-box{
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: none;
+      .add-title{
+        text-shadow: 1px 1px 2px crimson;
+      }
+    }
+  
+  
+  
+  
+    .image-upload-wrap {
+      margin-top: 10px;
+      border: 2px dashed $white;
+      position: relative;
+      padding: 40px 0px 20px 0px;
+      border-radius: 4px;
+      .file-upload-input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .drag-text {
+        display: flex;
+        justify-content: center;
+        .removeImgBtn {
+          background-color: $white;
+          color: $black;
+          padding: 5px;
+          width: 100%;
+          width: 20px;
+          position: absolute;
+          right: 42%;
+          bottom: 78%;
+        }
+        .uploadTitle {
+          width: 100%;
+          max-width: 190px;
+          text-align: center;
+          color: purple;
+        }
+        .uploadLink {
+          cursor: pointer;
+        }
+        .allowedFormats {
+          color: purple;
+          width: 100%;
+          max-width: 230px;
+        }
+      }
+    }
+  
+    .addUserBtn {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: none;
+      color: $white;
+      &:hover {
+        background-color: rgb(237, 41, 86);
+        transition: background-color 1s;
+      }
+    }
+  }
+}
+

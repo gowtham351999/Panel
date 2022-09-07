@@ -1,0 +1,1 @@
+export { LoginComp } from "./Login";

@@ -1,0 +1,131 @@
+@import "../scss/abstracts/abstracts";
+
+html body {
+  // font-family: Avenir, sans-serif;
+  font-family: Roboto, sans-serif;
+  background-color: teal;
+}
+button {
+  &.btn {
+    border-radius: 0;
+    font-size: fontSize(16px);
+    line-height: 19px;
+    // height: 45px;
+    padding: 0 12px;
+    font-weight: 500;
+    &.primary-btn {
+      background: $primary-color;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      color: $white;
+    }
+    &.viewButtonHeader {
+      background: transparent;
+      border-radius: 4px;
+      border: 1px solid $grey-ca;
+      color: $primary-color;
+      width: 150px;
+      padding: 5px;
+      font-weight: 500;
+    }
+    &.viewButtonColorHeader {
+      background: $primary-color;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: $white;
+      width: 150px;
+      padding: 5px;
+      font-weight: 500;
+    }
+  }
+}
+
+.word-break-normal {
+  word-break: normal;
+}
+
+.btn:focus,
+.btn.focus,
+input:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #fcfdfe !important;
+  outline: 0;
+  background-color: $white !important;
+  box-shadow: none;
+  background: none;
+}
+.text-black {
+  color: $black;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+//Hide Arrows in input
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+//Hide Arrows in input
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.modal-content {
+  border: none;
+  padding: 0;
+  height: 100%;
+}
+.Select__dropdown-indicator {
+  .icon-up {
+    padding-bottom: 2px;
+  }
+}
+
+.form-control {
+  &:disabled {
+    border-radius: 4px;
+    font-size: fontSize(14px);
+    line-height: 18px;
+    color: $text-black-1a;
+    opacity: 0.9;
+    background-color: $white;
+    cursor: not-allowed;
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+.border-radius-50 {
+  border-radius: 50%;
+}
+.word-wrap {
+  word-wrap: break-word;
+}
+
+.border-top {
+  border-top: 1px solid #b8bcc5 !important;
+}
+.dnd-img {
+  width: 100px;
+}
+// .scroll {
+//   width: 100%;
+//   min-width: 1200px;
+//   overflow: auto;
+//   white-space: nowrap;
+// }
+

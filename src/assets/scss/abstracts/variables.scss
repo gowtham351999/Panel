@@ -1,0 +1,46 @@
+$primary-color: #08316d;
+$secondary-color: #52575c;
+$gold-d8: #d8af49;
+$white: #fff;
+$green-18: #189c5c;
+$black: #000000;
+$text-black-1a: #1a202c;
+$grey-67: #676b70;
+$black-25: #25282b;
+$white-f9: #f9f9fa;
+$grey-ca: #cacccf;
+$white-f0: #f0f2f5;
+$yellow-C1: #c18f13;
+
+.text-secondary {
+  color: $secondary-color !important;
+}
+
+$myColors: (
+  "secondary-color": $secondary-color,
+  "grey-67": $grey-67,
+  "black-25": $black-25,
+  "primary-color": $primary-color,
+  "black": $black,
+  "gold-d8": $gold-d8,
+  "yellow-C1": $yellow-C1,
+);
+
+@each $name, $colors in $myColors {
+  $index: index($myColors, $colors);
+  .text-#{$name} {
+    color: $colors;
+  }
+  .bg-#{$name} {
+    background-color: $colors;
+  }
+  .text-#{$name} {
+    color: $colors;
+  }
+  .bg-h-#{$name} {
+    background-color: $colors;
+  }
+  .bc-#{$name} {
+    border-color: $colors;
+  }
+}

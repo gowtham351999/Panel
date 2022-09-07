@@ -1,0 +1,99 @@
+@import "../../../assets/scss/abstracts/abstracts";
+
+.navbar {
+  height: 72px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 9 !important;
+  .profile-name-card {
+    background-color: #d8d8d8;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+}
+
+.profile-dropdown {
+  position: relative;
+  .down-icon {
+    font-size: 6px;
+  }
+  .dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: $white;
+    padding: 15px;
+    border-radius: 4px;
+    z-index: 9;
+    min-width: 225px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    display: none;
+    font-weight: 500;
+    &.active {
+      color: $black;
+      font-size: fontSize(16px);
+      display: block;
+    }
+    li {
+      padding: 6px 0;
+      color: $black;
+      list-style: none;
+      font-size: fontSize(16px);
+      display: flex;
+      align-items: center;
+    }
+    li:hover {
+      color: $black;
+      font-size: fontSize(16px);
+    }
+  }
+}
+
+.change-password {
+  .modal-content {
+    .modal-header {
+      background: $primary-color;
+      border-radius: 4px 4px 0px 0px;
+      padding: 20px 16px;
+      .modal-title {
+        font-size: fontSize(20px);
+        line-height: 28px;
+        color: $white;
+        font-weight: 700;
+      }
+      .close {
+        opacity: 1;
+        text-shadow: none;
+        font-weight: 500;
+        color: $white;
+      }
+    }
+    .btn {
+      width: 100px;
+    }
+    .popup-password {
+      background-color: $white-f0 !important;
+      padding: 20px;
+      .model_password_input {
+        padding: 0 20px 20px 20px;
+        background: $white;
+        border-radius: 4px;
+        .normal-input {
+          margin-top: 0;
+          padding-top: 20px;
+        }
+      }
+    }
+  }
+}

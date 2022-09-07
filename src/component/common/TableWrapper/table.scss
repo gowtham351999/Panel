@@ -1,0 +1,169 @@
+@import "../../../assets/scss/abstracts/abstracts";
+
+.maintableStriped {
+  thead {
+    background: $white;
+  }
+  .tbody-class {
+    tr {
+      background: $white;
+    }
+  }
+  .table-filter {
+    i {
+      font-size: fontSize(5px);
+      opacity: 0.4;
+      color: $primary-color;
+      &.active {
+        opacity: 1;
+      }
+      &:first-child {
+        padding-bottom: 2px;
+      }
+    }
+  }
+  .tbody-class:before {
+    content: "@";
+    display: block;
+    line-height: 0px;
+    text-indent: -99999px;
+  }
+  .content-set-none:before {
+    content: none;
+    display: block;
+    line-height: 20px;
+    text-indent: -99999px;
+  }
+  .table {
+    th,
+    td {
+      border: none;
+      padding: 16px 12px;
+      color: $secondary-color;
+    }
+    th {
+      font-weight: normal;
+      font-size: fontSize(12px);
+      vertical-align: middle;
+    }
+    td:first-child {
+      max-width: 200px;
+    }
+    td {
+      font-size: fontSize(14px);
+      vertical-align: middle;
+      word-break: break-word;
+      padding: 16px 12px;
+      max-width: 190px;
+      &.action-button {
+        .btn {
+          min-width: 100px;
+          max-width: 100px;
+        }
+      }
+    }
+  }
+  .table {
+    thead {
+      tr {
+        th {
+          border-bottom: 1px solid #dbdde0 !important;
+          border: none;
+          background-color: $white;
+          color: $black-25;
+          font-weight: 600;
+          font-size: fontSize(14px);
+          line-height: 14px;
+        }
+      }
+    }
+    button {
+      &.btn {
+        min-width: 75px;
+        max-width: 75px;
+      }
+    }
+  }
+
+  .table-striped > tbody > tr:nth-child(odd) > td,
+  .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: transparent;
+  }
+  .table-striped > tbody > tr:nth-child(even) > td,
+  .table-striped > tbody > tr:nth-child(even) > th {
+    background-color: transparent;
+  }
+}
+
+.pagination {
+  justify-content: start;
+}
+
+.page-item:last-child .page-link {
+  background-color: transparent !important;
+  border-radius: 4px !important;
+  border: solid 1px $grey-ca;
+}
+
+.page-item:last-child .page-link:hover {
+  background-color: rgba($color: $primary-color, $alpha: 0.8) !important;
+  border: solid 1px $white-f9 !important;
+  color: $white !important;
+}
+
+.page-item:first-child .page-link:hover {
+  background-color: rgba($color: $primary-color, $alpha: 0.8) !important;
+  border: solid 1px $grey-ca !important;
+  color: $white !important;
+}
+
+.page-item .page-link {
+  background-color: transparent;
+  border-radius: 4px;
+  border: solid 1px transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+}
+
+.page-item .page-link:hover {
+  background-color: rgba($color: $primary-color, $alpha: 0.8);
+  border: solid 1px $grey-ca;
+  color: $white;
+}
+
+.custom-pagination {
+  .page-item {
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      border: solid 1px $grey-ca;
+      border-radius: 4px;
+    }
+  }
+  .page-link {
+    font-size: fontSize(12px);
+    color: $black;
+    padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+    font-weight: 800;
+    border: 1px solid transparent;
+    &:focus {
+      box-shadow: 0 0;
+    }
+  }
+  .page-item.active .page-link {
+    background-color: $primary-color;
+    color: $white;
+    border: 1px solid $grey-ca;
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,32 @@
+@import "../../../assets/scss/abstracts/abstracts";
+
+.normal-input {
+  margin-top: 32px;
+  label {
+    font-size: fontSize(14px);
+    color: $black-25;
+    line-height: 19px;
+  }
+  .form-control {
+    width: 100%;
+    height: 42px;
+    font-size: fontSize(16px);
+    color: $text-black-1a;
+    background-color: $white;
+    border: 1px solid $grey-ca;
+    border-radius: 4px;
+    transition: all 0.25s ease-in-out 0s;
+    &:disabled {
+      background-color: $white;
+      cursor: not-allowed;
+    }
+  }
+  input.form-control:focus {
+    border-color: $grey-ca !important;
+  }
+  input::placeholder {
+    font-size: fontSize(16px);
+    letter-spacing: -0.11px;
+    color: $grey-ca;
+  }
+}

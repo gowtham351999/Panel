@@ -1,0 +1,59 @@
+@import "../../../assets/scss/abstracts/abstracts";
+
+//Nav- tabs
+
+.common-navlink {
+  .nav-tabs {
+    border-bottom: 1px solid #d7d7d7 !important;
+    width: 100%;
+    position: relative;
+    .nav-link {
+      border-bottom: 2px solid $primary-color;
+      cursor: pointer;
+      border: 0;
+      padding: 10px 16px;
+    }
+  }
+  .count {
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-left: 6px;
+  }
+  .filled-tabs {
+    .tab-search {
+      position: absolute;
+      margin-top: 10px;
+      z-index: 9;
+      right: 30px;
+    }
+    a {
+      cursor: pointer;
+      &.active.nav-link {
+        color: $primary-color;
+        border-radius: 0px;
+        border-bottom: 3px solid $primary-color;
+        opacity: 1;
+      }
+      &.nav-link {
+        background: transparent;
+        border-bottom: 3px solid transparent;
+        min-width: 160px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $secondary-color;
+        font-size: fontSize(18px);
+        line-height: 18px;
+        font-weight: 700;
+        opacity: 0.9;
+      }
+      &.nav-link:hover {
+        color: $primary-color;
+        border-radius: 0px;
+        border-bottom: 3px solid $primary-color;
+        opacity: 1;
+      }
+    }
+  }
+}

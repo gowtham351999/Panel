@@ -1,0 +1,50 @@
+$root-font-size: 16px;
+
+@function fontSize($size) {
+  $remSize: $size / $root-font-size;
+  @return #{$remSize}rem;
+}
+
+/* Font Size */
+$fs: 38;
+@while $fs > 4 {
+  .fs-#{$fs} {
+    font-size: $fs * 1px;
+  }
+  $fs: $fs - 1;
+}
+
+//Line-Height
+$line-height: 38;
+@while $line-height > 8 {
+  .line-height-#{$line-height} {
+    line-height: $line-height * 1px;
+  }
+  $line-height: $line-height - 1;
+}
+
+/* Font-weight */
+$fw: 800;
+@while $fw > 200 {
+  .fw-#{$fw} {
+    font-weight: $fw;
+  }
+  $fw: $fw - 100;
+}
+
+/* Height */
+$height: 700;
+@while $height > 400 {
+  .h-#{$height} {
+    height: $height;
+  }
+  $height: $height - 50;
+}
+/* Border radius */
+$border-radius: 20;
+@while $border-radius > 10 {
+  .br-#{$border-radius} {
+    border-radius: $border-radius;
+  }
+  $border-radius: $border-radius - 1;
+}

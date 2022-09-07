@@ -69,6 +69,18 @@ const routers = [
         auth: false,
         exact: true,
       },
+    ],
+  },
+
+
+
+  {
+    component: "PanelLayout",
+    path: "/user",
+    auth: false,
+    name: "PanelLayout",
+    exact: false,
+    childrens: [
       {
         component: "PersonalAddPage",
         path: "/user-add",

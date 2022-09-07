@@ -4,31 +4,32 @@ import React, { useState } from "react";
 import { HiUsers } from "react-icons/hi";
 import { ImUserTie } from "react-icons/im";
 
-export const PanelLayout = ({ children }) => {
+export const UserLayout = ({ children }) => {
   const [toggle, setToggle] = useState(false);
 
   let getAdmin = JSON.parse(localStorage.getItem("adminName"));
 
-  const hide = getAdmin === "jojo" ? true : false;
+  const hide = (getAdmin === "jojo" ? true : false);
 
-  console.log(hide, "hdhd");
+  console.log(hide,'hdhd')
+
 
   const navLinks = [
     {
       id: 0,
       to: "/dashboard/view",
-      navContent: "/dashboard",
+      navContent:"/dashboard",
       label: "GeneralProfile",
       iconName: <HiUsers className="text-light fs-20" />,
-      hideLabel: hide,
+      hideLabel: hide
     },
     {
       id: 1,
-      to: "/user/user-add",
-      navContent: "/user",
+      to: "/dashboard/user-add",
+      navContent:"/user",
       label: "UserProfile",
       iconName: <ImUserTie className="text-light fs-20" />,
-      hideLabel: hide,
+      hideLabel: hide
     },
   ];
 

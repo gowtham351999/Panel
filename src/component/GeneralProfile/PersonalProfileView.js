@@ -45,7 +45,7 @@ export const PersonalProfileView = () => {
               <div
                 className="d-flex justify-content-start pb-2"
                 onClick={() => history.push({
-                  pathname:"/dashboard/user-add",
+                  pathname:"/user/user-add",
                   state:viewData
                 })}
               >

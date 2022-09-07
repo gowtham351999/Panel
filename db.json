@@ -5,6 +5,31 @@
       "passWord": "6363",
       "emailId": "math@gmail.com",
       "id": 1
+    },
+    {
+      "name": "megan",
+      "username": "ryan",
+      "website": "www.knju.com",
+      "phone": "8656534427",
+      "stack": [
+        {
+          "value": 3,
+          "label": "JavaScript"
+        },
+        {
+          "value": 5,
+          "label": "ReactJS/Native"
+        }
+      ],
+      "fileType": {
+        "file": [
+          {
+            "path": "_Tint-Image.svg",
+            "preview": "blob:http://localhost:3001/49ca36b3-2279-4852-b3b5-778810dd14e9"
+          }
+        ]
+      },
+      "id": 2
     }
   ]
 }

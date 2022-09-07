@@ -6,7 +6,7 @@ import "./sidebar.scss";
 export const Sidebar = ({ menuOpen, navLinks }) => {
   const getLink = history.location.pathname;
 
-  
+  console.log(getLink.includes("/edit"), "ueu");
 
   const extractLink = getLink.split("/");
 
@@ -23,7 +23,9 @@ export const Sidebar = ({ menuOpen, navLinks }) => {
                   <NavLink
                     to={to}
                     className={`${
-                      getLink.includes("/dashboard") && "nav-link"
+                      getLink.includes(navContent)
+                        ? "nav-link"
+                        : "nav-link-normal"
                     } py-3`}
                   >
                     <div className="sidebar-menu">
@@ -41,10 +43,14 @@ export const Sidebar = ({ menuOpen, navLinks }) => {
       ) : (
         <div className="left-menu-short">
           <ul>
-            {navLinks.map(({ to, label, iconName }, index) => {
+            {navLinks.map(({ to, label, navContent, iconName }, index) => {
               return (
                 <li key={index} className="pb-1">
-                  <NavLink to={to} className="nav-link py-3">
+                  <NavLink to={to} className={`${
+                      getLink.includes(navContent)
+                        ? "nav-link"
+                        : "nav-link-normal"
+                    } py-3`}>
                     <div className="sidebar-menu">
                       <div className="menu-icon text-left">
                         <span>{iconName}</span>

@@ -193,7 +193,7 @@ export const PersonalAdd = () => {
     });
 
     history.push({
-      pathname: "/dashboard/user-view",
+      pathname: "/user/user-view",
       state: addPersonalUser,
     });
     // await axios.post("http://localhost:3003/personal", addPersonalUser).then(() => {

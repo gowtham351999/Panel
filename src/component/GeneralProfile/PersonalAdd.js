@@ -1,6 +1,7 @@
 import closeIcon from "assets/svg/canvasClose.svg";
 import upload from "assets/svg/uploadFileIcon.svg";
 import { SelectComponent } from "component/common/SelectComponent";
+import { Selector } from "component/common/Selector";
 import React, { useCallback, useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
 import { MdOutlineRemoveCircle } from "react-icons/md";
@@ -9,15 +10,6 @@ import "./style.scss";
 
 export const PersonalAdd = () => {
   const [add, setAdd] = useState(null);
-
-  const [addPersonalUser, setAddPersonalUser] = useState({
-    id: "",
-    personalName: "",
-    personalUsername: "",
-    personalMobile: "",
-    personalStack: null,
-    personalFileType: "",
-  });
 
   const [option, setOption] = useState([]);
 
@@ -88,9 +80,45 @@ export const PersonalAdd = () => {
     },
   ];
 
+  const genderData = [
+    {
+      id: 0,
+      name: "Male",
+    },
+    {
+      id: 1,
+      name: "Female",
+    },
+  ];
+
+  const martialStatusData = [
+    {
+      id: 0,
+      name: "Single",
+    },
+    {
+      id: 1,
+      name: "Commited",
+    },
+    {
+      id: 2,
+      name: "Married",
+    },
+  ];
+
   const history = useHistory();
 
   const editData = useLocation();
+
+  const [addPersonalUser, setAddPersonalUser] = useState({
+    personalName: editData?.state?.personalName,
+    personalUsername: editData?.state?.personalUsername,
+    personalMobile: editData?.state?.personalMobile,
+    personalStack: editData?.state?.personalStack,
+    personalGender: editData?.state?.personalGender ? editData?.state?.personalGender : "Male",
+    personalMartialStatus: editData?.state?.personalMartialStatus ? editData?.state?.personalMartialStatus : "Single",
+    personalFileType: editData?.state?.personalFileType,
+  });
 
   useEffect(() => {
     if (editData) {
@@ -98,15 +126,19 @@ export const PersonalAdd = () => {
     }
   }, [editData]);
 
-  const optionData = editData ? add?.personalStack : option;
-
-  console.log("akk", add);
-
   //handle Change
   const handleChange = (e) => {
     e.persist();
     const { name, value } = e.target || e || {};
     setAddPersonalUser({ ...addPersonalUser, [name]: value });
+  };
+
+  const handleGenderChange = (e) => {
+    setAddPersonalUser({ ...addPersonalUser, personalGender: e.target.value });
+  };
+
+  const handleMartialChange = (e) => {
+    setAddPersonalUser({ ...addPersonalUser, personalMartialStatus: e.target.value });
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -175,7 +207,7 @@ export const PersonalAdd = () => {
   };
 
   const handleDelete = (i) => {
-    let datum = optionData;
+    let datum = editData ? addPersonalUser.personalStack : option;
     datum.splice(i, 1);
     setOption([...datum]);
   };
@@ -219,11 +251,7 @@ export const PersonalAdd = () => {
                     type="text"
                     className="form-control form-control-lg"
                     id="exampleFormControlInput1"
-                    defaultValue={
-                      editData
-                        ? add?.personalName
-                        : addPersonalUser.personalName
-                    }
+                    value={addPersonalUser.personalName}
                     name="personalName"
                     onChange={handleChange}
                   />
@@ -234,11 +262,7 @@ export const PersonalAdd = () => {
                     type="text"
                     className="form-control form-control-lg"
                     id="exampleFormControlInput1"
-                    defaultValue={
-                      editData
-                        ? add?.personalUsername
-                        : addPersonalUser.personalUsername
-                    }
+                    value={addPersonalUser.personalUsername}
                     name="personalUsername"
                     onChange={handleChange}
                   />
@@ -249,11 +273,7 @@ export const PersonalAdd = () => {
                     type="text"
                     className="form-control form-control-lg"
                     id="exampleFormControlInput1"
-                    defaultValue={
-                      editData
-                        ? add?.personalMobile
-                        : addPersonalUser.personalMobile
-                    }
+                    value={addPersonalUser.personalMobile}
                     name="personalMobile"
                     onChange={handleChange}
                   />
@@ -263,11 +283,11 @@ export const PersonalAdd = () => {
                     <div className="select-container">
                       <SelectComponent
                         options={myOptions}
-                        value={optionData}
+                        value={addPersonalUser.personalStack}
                         onChange={handleSelectChange}
                       />
                       <div className="d-flex pt-3">
-                        {optionData?.map(({ label }) => {
+                        {addPersonalUser.personalStack?.map(({ label }) => {
                           return (
                             <React.Fragment>
                               <p className="text-danger fw-800">
@@ -283,11 +303,29 @@ export const PersonalAdd = () => {
                     </div>
                   </div>
 
+                  <div className="pt-3">
+                    <Selector
+                      label="Select Gender"
+                      value={addPersonalUser.personalGender}
+                      onChange={handleGenderChange}
+                      option={genderData}
+                    />
+                  </div>
+
+                  <div className="pt-3">
+                    <Selector
+                      label="Select Martial Status"
+                      value={addPersonalUser.personalMartialStatus}
+                      onChange={handleMartialChange}
+                      option={martialStatusData}
+                    />
+                  </div>
+
                   <div>
                     <label className="text-light mb-0">
                       Drop your documents
                     </label>
-                    <Dropzone onDrop={onDrop} maxSize={10000} maxFiles={3}>
+                    <Dropzone onDrop={onDrop} minSize={10000}>
                       {({ getRootProps, getInputProps }) => (
                         <div
                           {...getRootProps({
@@ -351,6 +389,12 @@ export const PersonalAdd = () => {
                         </div>
                       )}
                     </Dropzone>
+
+                    {editData?.state?.personalFileType?.file?.map((item) => {
+                      return (
+                        <p className="text-warning fw-800 pt-2">{item?.name}</p>
+                      );
+                    })}
                   </div>
                   <div className="col-12">
                     <button

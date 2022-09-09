@@ -3,6 +3,7 @@ import upload from "assets/svg/uploadFileIcon.svg";
 import axios from "axios";
 import { NormalInput } from "component/common/NormalInput";
 import { SelectComponent } from "component/common/SelectComponent";
+import { Selector } from "component/common/Selector";
 import React, { useCallback, useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
 import { MdOutlineRemoveCircle } from "react-icons/md";
@@ -14,9 +15,11 @@ export const Add = () => {
     name: "",
     username: "",
     website: "",
+    city: "",
     phone: "",
     stack: null,
     fileType: "",
+    status: "Male",
   });
 
   const [option, setOption] = useState([]);
@@ -88,6 +91,17 @@ export const Add = () => {
     },
   ];
 
+  const statusData = [
+    {
+      id: 0,
+      name: "Male",
+    },
+    {
+      id: 1,
+      name: "Female",
+    },
+  ];
+
   const history = useHistory();
 
   //handle Change
@@ -95,6 +109,11 @@ export const Add = () => {
     e.persist();
     const { name, value } = e.target || e || {};
     setAddUser({ ...addUser, [name]: value });
+  };
+
+  const handleStatusChange = (e) => {
+    // setStatus(e.target.value);
+    setAddUser({ ...addUser, status: e.target.value });
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -119,7 +138,13 @@ export const Add = () => {
     }
   }, [files, showPreview]);
 
-  // localStorage.setItem('uploadFile', JSON.stringify(files));
+  useEffect(() => {
+    axios.get("https://ipapi.co/json/").then((res) => {
+      setAddUser({ ...addUser, city: res?.data?.region });
+    });
+  }, []);
+
+  console.log(addUser, "city");
 
   const images = files.map((file) => (
     <div className="dnd-container" key={file.name}>
@@ -214,6 +239,17 @@ export const Add = () => {
                     onChange={handleChange}
                   />
                 </div>
+
+                <div className="form-group my-2">
+                  <NormalInput
+                    type="text"
+                    label="State"
+                    name="city"
+                    value={addUser?.city}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <div className="form-group my-2">
                   <NormalInput
                     type="tel"
@@ -221,7 +257,7 @@ export const Add = () => {
                     name="phone"
                     value={addUser.phone}
                     onChange={handleChange}
-                  />         
+                  />
                   <div className="pt-3">
                     <label className="text-light">Select TechStacks</label>
                     <div className="select-container">
@@ -245,6 +281,16 @@ export const Add = () => {
                         })}
                       </div>
                     </div>
+                  </div>
+
+                  <div className="pt-3">
+                    <label className="text-light">Select Status</label>
+                    <Selector
+                      name="status"
+                      value={addUser.status}
+                      onChange={handleStatusChange}
+                      option={statusData}
+                    />
                   </div>
 
                   <div>

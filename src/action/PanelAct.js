@@ -8,3 +8,12 @@ export const fileHandler = (data) => (dispatch, getState) => {
     });
   });
 };
+
+export const uploadFileHandler = (data) => (dispatch, getState) => {
+  return new Promise((resolve, reject) => {
+    dispatch({
+      type: panelData.fileUpload,
+      payload: data,
+    });
+  });
+};

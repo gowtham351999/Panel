@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NormalInput } from "component/common/NormalInput";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { history } from "service/helpers";
 import "./style.scss";
 
@@ -14,6 +15,19 @@ export const Login = () => {
     userName: "",
     passWord: "",
   });
+
+  const notify = () => toast("Successfully logged out!");
+
+  const getLogOut = localStorage.getItem("logOut");
+
+  useEffect(() => {
+    if (getLogOut) {
+      notify();
+    }
+    setTimeout(() => {
+      localStorage.clear();
+    }, 1000);
+  }, []);
 
   const handleLoginChange = (e) => {
     e.persist();
@@ -108,6 +122,7 @@ export const Login = () => {
 
   return (
     <div className="row">
+      <Toaster />
       <div className="col-12">
         <div className="d-flex justify-content-center align-items-center vh-100">
           <div>

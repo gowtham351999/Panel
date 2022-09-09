@@ -12,6 +12,13 @@ export const Register = () => {
     emailId: "",
   });
 
+  const [formError, setFormError] = useState({
+    userName: "",
+    passWord: "",
+    emailId: "",
+    allow: false,
+  });
+
   const handleRegisterChange = (e) => {
     e.persist();
     const { name, value } = e.target || e || {};
@@ -27,17 +34,43 @@ export const Register = () => {
   //   localStorage.setItem("registeredUsers", JSON.stringify(registerData));
   // }
 
+  const validateRegisterHandler = () => {
+    if (
+      !registerUser.userName &&
+      !registerUser.passWord &&
+      !registerUser.emailId
+    ) {
+      setFormError({
+        ...formError,
+        userName: "Please enter the username!",
+        passWord: "Please enter the password!",
+        emailId: "Please enter the emailId!",
+        allow: true,
+      });
+    } else if (registerUser.passWord.length < 3) {
+      setFormError({
+        ...formError,
+        passWord: "Please enter correct password!",
+        allow: true,
+      });
+    }
+  };
+
   const sendRegisterData = async () => {
-    await axios.post("http://localhost:3003/users", registerUser);
+    if (formError.allow) {
+      await axios.post("http://localhost:3003/users", registerUser);
+    }
   };
 
   const handleRegisterSubmit = async () => {
+    validateRegisterHandler();
     sendRegisterData();
     await axios.get("http://localhost:3003/users").then((result) => {
       return result?.data?.find((item) => {
         if (
-          item.userName === registerUser.userName &&
-          item.passWord === registerUser.passWord
+          (item.userName === registerUser.userName &&
+            item.passWord === registerUser.passWord) ||
+          (!registerUser.userName && !registerUser.passWord)
         ) {
           console.log("failed!");
         }
@@ -61,6 +94,9 @@ export const Register = () => {
                     value={registerUser.userName}
                     onChange={handleRegisterChange}
                   />
+                  {formError.userName && (
+                    <p className="text-danger">{formError.userName}</p>
+                  )}
                 </div>
               </div>
               <div className="col-12">
@@ -72,6 +108,9 @@ export const Register = () => {
                     value={registerUser.passWord}
                     onChange={handleRegisterChange}
                   />
+                  {formError.passWord && (
+                    <p className="text-danger">{formError.passWord}</p>
+                  )}
                 </div>
               </div>
               <div className="col-12">
@@ -83,6 +122,9 @@ export const Register = () => {
                     value={registerUser.emailId}
                     onChange={handleRegisterChange}
                   />
+                  {formError.emailId && (
+                    <p className="text-danger">{formError.emailId}</p>
+                  )}
                 </div>
               </div>
               <div className="col-12">

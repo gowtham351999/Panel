@@ -1,7 +1,9 @@
+import { fileHandler } from "action/PanelAct";
 import FileSaver from "file-saver";
 import React, { useEffect, useState } from "react";
 import { AiFillBackward } from "react-icons/ai";
 import { FaUserEdit } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { history } from "service/helpers";
 import "./style.scss";
@@ -23,11 +25,14 @@ export const PersonalProfileView = () => {
 
   const getViewData = useLocation();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (getViewData) {
       setViewData(getViewData?.state);
+      dispatch(fileHandler(viewData));
     }
-  }, [getViewData]);
+  });
 
   const exportData = () => {
     let blob = new Blob([JSON.stringify(viewData)], {
@@ -44,10 +49,12 @@ export const PersonalProfileView = () => {
             <div className="viewUserContainer p-5">
               <div
                 className="d-flex justify-content-start pb-2"
-                onClick={() => history.push({
-                  pathname:"/user/user-add",
-                  state:viewData
-                })}
+                onClick={() =>
+                  history.push({
+                    pathname: "/user/user-add",
+                    state: viewData,
+                  })
+                }
               >
                 <div>
                   <FaUserEdit className="text-warning fs-30 cursor-pointer" />
@@ -63,8 +70,12 @@ export const PersonalProfileView = () => {
                 <div>
                   <p className="text-warning text-left fw-400">Name :</p>
                   <p className="text-warning text-left fw-400">Username :</p>
+                  <p className="text-warning text-left fw-400">Gender :</p>
                   <p className="text-warning text-left fw-400 mb-0 pb-3">
                     Phone-Number :
+                  </p>
+                  <p className="text-warning text-left fw-400 mb-0 pb-3">
+                    File :
                   </p>
                   <p className="text-warning text-left fw-400 mb-0">
                     Tech-Stacks :
@@ -77,9 +88,22 @@ export const PersonalProfileView = () => {
                   <p className="text-light text-left fw-400">
                     {viewData?.personalUsername}
                   </p>
+                  <p className="text-light text-left fw-400">
+                    {viewData?.personalGender}
+                  </p>
+                  <p className="text-light text-left fw-400">
+                    {viewData?.personalMartialStatus}
+                  </p>
                   <p className="text-light text-left fw-400 mb-0 pb-3">
                     {viewData?.personalMobile}
                   </p>
+                  {viewData?.personalFileType?.file?.map((val) => {
+                    return (
+                      <p className="text-light text-left fw-400 mb-0 pb-3">
+                        {val.name}
+                      </p>
+                    );
+                  })}
                   {viewData?.personalStack?.map((res, i) => {
                     return (
                       <p className="text-light text-left fw-400 mb-0">

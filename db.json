@@ -1,16 +1,11 @@
 {
   "users": [
     {
-      "userName": "jojo",
-      "passWord": "6363",
-      "emailId": "math@gmail.com",
-      "id": 1
-    },
-    {
-      "name": "megan",
-      "username": "ryan",
+      "name": "gowtham",
+      "username": "gowtham",
       "website": "www.knju.com",
-      "phone": "8656534427",
+      "city": "Chennai",
+      "phone": "08610034427",
       "stack": [
         {
           "value": 3,
@@ -25,10 +20,34 @@
         "file": [
           {
             "path": "_Tint-Image.svg",
-            "preview": "blob:http://localhost:3001/49ca36b3-2279-4852-b3b5-778810dd14e9"
+            "preview": "blob:http://localhost:3000/a8c13be7-065c-4264-89b6-fe73c2f421e8"
           }
         ]
       },
+      "status": "Male",
+      "id": 1
+    },
+    {
+      "name": "prabhat",
+      "username": "kubal",
+      "website": "www.knju.com",
+      "city": "Tamil Nadu",
+      "phone": "8656534427",
+      "stack": [
+        {
+          "value": 2,
+          "label": "NodeJS"
+        }
+      ],
+      "fileType": {
+        "file": [
+          {
+            "path": "Banners.svg",
+            "preview": "blob:http://localhost:3000/21e8b8ea-9352-4b6a-bf35-d4c037b16f23"
+          }
+        ]
+      },
+      "status": "Male",
       "id": 2
     }
   ]

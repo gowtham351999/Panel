@@ -12,48 +12,9 @@ export const View = () => {
 
   const [search, setSearch] = useState("");
 
-  const headerContents = [
-    {
-      id: 0,
-      label: "S.No",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 1,
-      label: "Name",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 2,
-      label: "File",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 3,
-      label: "Tech Stacks",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 4,
-      label: "Phone Number",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 5,
-      label: "",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 6,
-      label: "",
-      className: "bg-danger text-light",
-    },
-    {
-      id: 7,
-      label: "",
-      className: "bg-danger text-light",
-    },
-  ];
+  const [approve, setApprove] = useState(0);
+
+  const [decline, setDecline] = useState(0);
 
   useEffect(() => {
     loadUserData();
@@ -73,6 +34,15 @@ export const View = () => {
     const userLoad = datum.filter((user) => user.id !== item);
     setDatum(userLoad);
   };
+
+  const approveHandler = (id) =>{
+    return setApprove(id);
+  }
+
+  const disapproveHandler = (id) =>{
+    return setDecline(id);
+  }
+  
 
   return (
     <>
@@ -168,6 +138,14 @@ export const View = () => {
                             </div>
                             <div className="col-2">
                               <p className="text-light fw-400">{phone}</p>
+                            </div>
+                            <div className="col-1">
+                            <button className="btn btn-info" onClick={() =>approveHandler(id)}>y</button>
+                            {item.id === approve && localStorage.setItem('status', "Approved")}
+                            </div>
+                            <div className="col-1">
+                            <button className="btn btn-info" onClick={() =>disapproveHandler(id)}>n</button>
+                            {item.id === decline && localStorage.setItem('status', "Declined")}
                             </div>
                             <div className="col-2">
                               <div className="d-flex flex-row justify-content-between">

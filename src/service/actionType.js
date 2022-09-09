@@ -4,4 +4,5 @@ export const chefDataType = {
 
 export const panelData = {
   fileData: "FILE_DATA",
+  fileUpload: "FILE_UPLOAD"
 }

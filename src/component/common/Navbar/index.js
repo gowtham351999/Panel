@@ -9,6 +9,7 @@ export const Navbar = ({ handleToggler }) => {
 
   const handleLogout = () => {
     history.push("/home/login");
+    localStorage.setItem('logOut', true);
   };
 
   const getAdminName = JSON.parse(localStorage.getItem("adminName"));

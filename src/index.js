@@ -1,11 +1,12 @@
+import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import { Routes } from "./routes/index";
-import * as serviceWorker from "./serviceWorker";
+import "react-notifications/lib/notifications.css";
 import { Provider } from "react-redux";
 import { store } from "service/helpers";
 import "./assets/scss/index.scss";
-import "react-notifications/lib/notifications.css";
+import { Routes } from "./routes/index";
+import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <Provider store={store}>
     <Routes />

@@ -12,10 +12,6 @@ export const View = () => {
 
   const [search, setSearch] = useState("");
 
-  const [approve, setApprove] = useState("");
-
-  const [detail, setDetail] = useState([{ name: "", status: "" }]);
-
   useEffect(() => {
     loadUserData();
   }, [search]);
@@ -35,11 +31,33 @@ export const View = () => {
     setDatum(userLoad);
   };
 
-  let result = detail?.filter((current, index) => {
-    return detail?.findIndex((user) => user.name === current.name) === index;
-  });
+  const approveHandler = async (id, username, statusData, phone, file, website) => {
+    await axios
+      .put(`http://localhost:3003/users/${id}`, {
+        approvalStatus: statusData,
+        name: username,
+        phone: phone,
+        file: file?.fileType?.file?.map((i) => i.path),
+        website: website
+      })
+      .then(() => {
+        alert(`User ${username} Approved`);
+      });
+  };
 
-  console.log(result,'akka') 
+  const disapproveHandler = async (id, username, statusData, phone, file, website) => {
+    await axios
+      .put(`http://localhost:3003/users/${id}`, {
+        approvalStatus: statusData,
+        name: username,
+        phone: phone,
+        file: file?.fileType?.file?.map((i) => i.path),
+        website: website
+      })
+      .then(() => {
+        alert(`User ${username} Declined`);
+      });
+  };
 
   return (
     <>
@@ -82,7 +100,7 @@ export const View = () => {
                   </div>
                   <div className="col-2">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      Tech Stacks
+                      website
                     </p>
                   </div>
                   <div className="col-4">
@@ -99,7 +117,7 @@ export const View = () => {
                 ) : (
                   <>
                     {datum.map((item, i) => {
-                      let { id, name, phone } = item;
+                      let { id, name, phone, website } = item;
                       return (
                         <React.Fragment>
                           <div className="row p-3">
@@ -125,13 +143,9 @@ export const View = () => {
                               })}
                             </div>
                             <div className="col-2">
-                              {item?.stack?.map((val) => {
-                                return (
-                                  <p className="text-light fw-400 userDetailPara">
-                                    {val.label}
-                                  </p>
-                                );
-                              })}
+                            <p className="text-light fw-400 userDetailPara">
+                                {website}
+                              </p>
                             </div>
                             <div className="col-2">
                               <p className="text-light fw-400">{phone}</p>
@@ -139,12 +153,9 @@ export const View = () => {
                             <div className="col-1">
                               <button
                                 className="btn btn-info"
-                                onClick={() => {
-                                  setApprove(item.approvalStatusSuccess);
-                                  setDetail([{...detail, name:name, status:item.approvalStatusSuccess}]); 
-                                                                                                                          
-                                  
-                                }}
+                                onClick={() =>
+                                  approveHandler(id, name, "Approved", phone, item, website)
+                                }
                               >
                                 y
                               </button>
@@ -152,11 +163,9 @@ export const View = () => {
                             <div className="col-1">
                               <button
                                 className="btn btn-info"
-                                onClick={() => {
-                                  setApprove(item.approvalStatusFailure);
-                                  setDetail([{...detail, name:name, status:item.approvalStatusFailure}]); 
-                                                                   
-                                }}
+                                onClick={() =>
+                                  disapproveHandler(id, name, "Declined", phone, item, website)
+                                }
                               >
                                 n
                               </button>

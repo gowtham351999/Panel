@@ -20,8 +20,10 @@ export const Add = () => {
     stack: null,
     fileType: "",
     status: "Male",
-    approvalStatus: "none",
+    approvalStatus: false,
     personalMartialStatus: "Single",
+    stringOne:'Approved',
+    stringTwo:'Disapproved'
   });
 
   const [option, setOption] = useState([]);

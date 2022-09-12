@@ -1,0 +1,11 @@
+{
+    "formHeader": {
+      "formTitle": "Add User",
+      "firstName": "First Name",
+      "userName": "Username",
+      "phNo": "Phone Number",
+      "techStack": "Select TechStacks",
+      "gender": "Select Gender",
+      "martialStatus": "Select Martial Status"
+    }
+}    

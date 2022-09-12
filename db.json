@@ -1,10 +1,30 @@
 {
   "users": [
     {
-      "approvalStatus": "Declined",
-      "name": "pal",
-      "phone": "9952993654",
-      "website": "www.knjou.com",
+      "name": "ramu",
+      "username": "bala",
+      "website": "www.knju.com",
+      "city": "Tamil Nadu",
+      "phone": "9656534466",
+      "stack": [
+        {
+          "value": 4,
+          "label": "TypeScript"
+        }
+      ],
+      "fileType": {
+        "file": [
+          {
+            "path": "3.png",
+            "preview": "blob:http://localhost:3000/276e9dd8-4f61-4324-bc59-0b1a2b94da1e"
+          }
+        ]
+      },
+      "status": "Male",
+      "approvalStatus": false,
+      "personalMartialStatus": "Single",
+      "stringOne": "Approved",
+      "stringTwo": "Disapproved",
       "id": 1
     }
   ]

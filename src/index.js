@@ -5,6 +5,7 @@ import "react-notifications/lib/notifications.css";
 import { Provider } from "react-redux";
 import { store } from "service/helpers";
 import "./assets/scss/index.scss";
+import "./i18n";
 import { Routes } from "./routes/index";
 import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(

@@ -31,33 +31,22 @@ export const View = () => {
     setDatum(userLoad);
   };
 
-  const approveHandler = async (id, username, statusData, phone, file, website) => {
-    await axios
-      .put(`http://localhost:3003/users/${id}`, {
-        approvalStatus: statusData,
-        name: username,
-        phone: phone,
-        file: file?.fileType?.file?.map((i) => i.path),
-        website: website
-      })
-      .then(() => {
-        alert(`User ${username} Approved`);
-      });
+  const approveHandler = (i) => {
+    let statusData = [...datum];
+    if (statusData[i]?.approvalStatus === true) {
+      statusData[i].approvalStatus = false;
+      alert(`${statusData[i].name} is canceled!`);
+    } else {
+      statusData[i].approvalStatus = true;
+      alert(`${statusData[i].name} is approved!`);
+    }
+    setDatum([...statusData]);
+    localStorage.setItem("userApproval", JSON.stringify(datum));
   };
 
-  const disapproveHandler = async (id, username, statusData, phone, file, website) => {
-    await axios
-      .put(`http://localhost:3003/users/${id}`, {
-        approvalStatus: statusData,
-        name: username,
-        phone: phone,
-        file: file?.fileType?.file?.map((i) => i.path),
-        website: website
-      })
-      .then(() => {
-        alert(`User ${username} Declined`);
-      });
-  };
+  let userApprovalData = JSON.parse(localStorage.getItem("userApproval"));
+
+  console.log(userApprovalData, "sjjs");
 
   return (
     <>
@@ -100,7 +89,7 @@ export const View = () => {
                   </div>
                   <div className="col-2">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      website
+                      Tech Stacks
                     </p>
                   </div>
                   <div className="col-4">
@@ -117,7 +106,7 @@ export const View = () => {
                 ) : (
                   <>
                     {datum.map((item, i) => {
-                      let { id, name, phone, website } = item;
+                      let { id, name, phone } = item;
                       return (
                         <React.Fragment>
                           <div className="row p-3">
@@ -143,33 +132,28 @@ export const View = () => {
                               })}
                             </div>
                             <div className="col-2">
-                            <p className="text-light fw-400 userDetailPara">
-                                {website}
-                              </p>
+                              {item?.stack?.map((val) => {
+                                return (
+                                  <p className="text-light fw-400 userDetailPara">
+                                    {val.label}
+                                  </p>
+                                );
+                              })}
                             </div>
                             <div className="col-2">
                               <p className="text-light fw-400">{phone}</p>
                             </div>
-                            <div className="col-1">
+                            <div className="col-2">
                               <button
                                 className="btn btn-info"
-                                onClick={() =>
-                                  approveHandler(id, name, "Approved", phone, item, website)
-                                }
+                                onClick={() => approveHandler(id - 1)}
                               >
-                                y
+                                {item?.approvalStatus
+                                  ? item?.stringOne
+                                  : item?.stringTwo}
                               </button>
                             </div>
-                            <div className="col-1">
-                              <button
-                                className="btn btn-info"
-                                onClick={() =>
-                                  disapproveHandler(id, name, "Declined", phone, item, website)
-                                }
-                              >
-                                n
-                              </button>
-                            </div>
+
                             <div className="col-2">
                               <div className="d-flex flex-row justify-content-between">
                                 <div className="pr-2">
@@ -208,54 +192,6 @@ export const View = () => {
           </div>
         </div>
       </div>
-      {/* <div className="d-flex justify-content-center">
-        <div>
-          <TableWrapper headerDetails={headerContents}>
-            {datum?.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td className="text-light fw-800">{index + 1}.</td>
-                  <td className="text-light fw-800">{item.name}</td>
-                  <td className="text-light fw-800">{item.phone}</td>
-                  <td className="text-light fw-800">
-                    {item?.fileType?.file?.map((value) => {
-                      return <>{value.path}</>;
-                    })}
-                  </td>
-                  <td className="text-light fw-800">
-                    {item?.stack?.map((val) => {
-                      return (
-                        <>
-                          {val.label} <br />
-                        </>
-                      );
-                    })}
-                  </td>
-                  <td>
-                    <span
-                      onClick={() => history.push(`/dashboard/view/${item.id}`)}
-                    >
-                      <CgProfile className="fs-26 text-warning cursor-pointer" />
-                    </span>
-                  </td>
-                  <td>
-                    <span
-                      onClick={() => history.push(`/dashboard/edit/${item.id}`)}
-                    >
-                      <MdModeEdit className="fs-26 text-success cursor-pointer" />
-                    </span>
-                  </td>
-                  <td>
-                    <span onClick={() => deleteHandler(item.id)}>
-                      <AiFillDelete className="fs-26 text-danger cursor-pointer" />
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </TableWrapper>
-        </div>
-      </div> */}
     </>
   );
 };

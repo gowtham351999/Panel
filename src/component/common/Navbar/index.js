@@ -1,15 +1,41 @@
+import { languageHandler } from "action/PanelAct";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoLogoElectron } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 import { history } from "service/helpers";
 import "./navbar.scss";
 
 export const Navbar = ({ handleToggler }) => {
   const [state, setState] = useState(true);
 
+  const [pill, setPill] = useState(0);
+
+  const languageData = [
+    {
+      id: 0,
+      title: "English",
+    },
+    {
+      id: 1,
+      title: "Tamil",
+    },
+  ];
+
   const handleLogout = () => {
     history.push("/home/login");
-    localStorage.setItem('logOut', true);
+    localStorage.setItem("logOut", true);
+  };
+
+  const dispatch = useDispatch();
+
+  const selectedLanguage = useSelector((data) => data.commonStore.fileData);
+
+  const changeLanguage = (language) => {
+    if (selectedLanguage !== language) {
+      dispatch(languageHandler(language));
+      localStorage.setItem('language', language)
+    }
   };
 
   const getAdminName = JSON.parse(localStorage.getItem("adminName"));
@@ -45,6 +71,20 @@ export const Navbar = ({ handleToggler }) => {
               <i className="icon-down-arrow down-icon text-white" />
             </div>
             <ul className={`dropdown ${!state ? "active" : ""}`}>
+              <li>
+                <div className="d-flex flex-row">
+                  {languageData.map((item) => {
+                    return (
+                      <div className="pr-3">
+                        <div className="bg-info p-2" onClick={() =>{
+                          setPill(item.id);
+                          changeLanguage(item.title);
+                        }}>{item.title}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </li>
               <li className="cursor-pointer">
                 <i className="icon-settings fs-20 mr-3" />
                 Change Password

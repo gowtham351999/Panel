@@ -4,6 +4,7 @@ import { SelectComponent } from "component/common/SelectComponent";
 import { Selector } from "component/common/Selector";
 import React, { useCallback, useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
+import { useTranslation } from "react-i18next";
 import { MdOutlineRemoveCircle } from "react-icons/md";
 import { useHistory, useLocation } from "react-router-dom";
 import "./style.scss";
@@ -110,13 +111,19 @@ export const PersonalAdd = () => {
 
   const editData = useLocation();
 
+  const { t } = useTranslation();
+
   const [addPersonalUser, setAddPersonalUser] = useState({
     personalName: editData?.state?.personalName,
     personalUsername: editData?.state?.personalUsername,
     personalMobile: editData?.state?.personalMobile,
     personalStack: editData?.state?.personalStack,
-    personalGender: editData?.state?.personalGender ? editData?.state?.personalGender : "Male",
-    personalMartialStatus: editData?.state?.personalMartialStatus ? editData?.state?.personalMartialStatus : "Single",
+    personalGender: editData?.state?.personalGender
+      ? editData?.state?.personalGender
+      : "Male",
+    personalMartialStatus: editData?.state?.personalMartialStatus
+      ? editData?.state?.personalMartialStatus
+      : "Single",
     personalFileType: editData?.state?.personalFileType,
   });
 
@@ -138,7 +145,10 @@ export const PersonalAdd = () => {
   };
 
   const handleMartialChange = (e) => {
-    setAddPersonalUser({ ...addPersonalUser, personalMartialStatus: e.target.value });
+    setAddPersonalUser({
+      ...addPersonalUser,
+      personalMartialStatus: e.target.value,
+    });
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -241,12 +251,12 @@ export const PersonalAdd = () => {
             <div className="addUser-BoxContainer pt-5 pb-4 px-5">
               <div className="addUser-title-box">
                 <h3 className="text-danger add-title fs-32 fw-800  text-center p-3">
-                  Add User{" "}
+                  {t("formHeader.formTitle")}
                 </h3>
               </div>
               <form className="my-4">
                 <div className="form-group my-2">
-                  <label className="text-light">First Name</label>
+                  <label className="text-light">{t("formHeader.firstName")}</label>
                   <input
                     type="text"
                     className="form-control form-control-lg"
@@ -257,7 +267,7 @@ export const PersonalAdd = () => {
                   />
                 </div>
                 <div className="form-group my-2">
-                  <label className="text-light">Username</label>
+                  <label className="text-light">{t("formHeader.userName")}</label>
                   <input
                     type="text"
                     className="form-control form-control-lg"
@@ -268,7 +278,7 @@ export const PersonalAdd = () => {
                   />
                 </div>
                 <div className="form-group my-2">
-                  <label className="text-light">Phone Number</label>
+                  <label className="text-light">{t("formHeader.phNo")}</label>
                   <input
                     type="text"
                     className="form-control form-control-lg"
@@ -279,7 +289,7 @@ export const PersonalAdd = () => {
                   />
 
                   <div className="pt-3">
-                    <label className="text-light">Select TechStacks</label>
+                    <label className="text-light">{t("formHeader.techStack")}</label>
                     <div className="select-container">
                       <SelectComponent
                         options={myOptions}
@@ -305,7 +315,7 @@ export const PersonalAdd = () => {
 
                   <div className="pt-3">
                     <Selector
-                      label="Select Gender"
+                      label={t("formHeader.gender")}
                       value={addPersonalUser.personalGender}
                       onChange={handleGenderChange}
                       option={genderData}
@@ -314,7 +324,7 @@ export const PersonalAdd = () => {
 
                   <div className="pt-3">
                     <Selector
-                      label="Select Martial Status"
+                      label={t("formHeader.martialStatus")}
                       value={addPersonalUser.personalMartialStatus}
                       onChange={handleMartialChange}
                       option={martialStatusData}

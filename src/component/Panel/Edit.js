@@ -10,6 +10,7 @@ export const Edit = () => {
     username: "",
     website: "",
     phone: "",
+    fileType: "",
   });
 
   const history = useHistory();

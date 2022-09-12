@@ -1,54 +1,11 @@
 {
   "users": [
     {
-      "name": "gowtham",
-      "username": "gowtham",
-      "website": "www.knju.com",
-      "city": "Chennai",
-      "phone": "08610034427",
-      "stack": [
-        {
-          "value": 3,
-          "label": "JavaScript"
-        },
-        {
-          "value": 5,
-          "label": "ReactJS/Native"
-        }
-      ],
-      "fileType": {
-        "file": [
-          {
-            "path": "_Tint-Image.svg",
-            "preview": "blob:http://localhost:3000/a8c13be7-065c-4264-89b6-fe73c2f421e8"
-          }
-        ]
-      },
-      "status": "Male",
+      "approvalStatus": "Declined",
+      "name": "pal",
+      "phone": "9952993654",
+      "website": "www.knjou.com",
       "id": 1
-    },
-    {
-      "name": "prabhat",
-      "username": "kubal",
-      "website": "www.knju.com",
-      "city": "Tamil Nadu",
-      "phone": "8656534427",
-      "stack": [
-        {
-          "value": 2,
-          "label": "NodeJS"
-        }
-      ],
-      "fileType": {
-        "file": [
-          {
-            "path": "Banners.svg",
-            "preview": "blob:http://localhost:3000/21e8b8ea-9352-4b6a-bf35-d4c037b16f23"
-          }
-        ]
-      },
-      "status": "Male",
-      "id": 2
     }
   ]
 }

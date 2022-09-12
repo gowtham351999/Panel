@@ -20,6 +20,8 @@ export const Add = () => {
     stack: null,
     fileType: "",
     status: "Male",
+    approvalStatus: "none",
+    personalMartialStatus: "Single",
   });
 
   const [option, setOption] = useState([]);
@@ -102,6 +104,21 @@ export const Add = () => {
     },
   ];
 
+  const martialStatusData = [
+    {
+      id: 0,
+      name: "Single",
+    },
+    {
+      id: 1,
+      name: "Commited",
+    },
+    {
+      id: 2,
+      name: "Married",
+    },
+  ];
+
   const history = useHistory();
 
   //handle Change
@@ -114,6 +131,10 @@ export const Add = () => {
   const handleStatusChange = (e) => {
     // setStatus(e.target.value);
     setAddUser({ ...addUser, status: e.target.value });
+  };
+
+  const handleMartialChange = (e) => {
+    setAddUser({ ...addUser, personalMartialStatus: e.target.value });
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -249,6 +270,15 @@ export const Add = () => {
                     onChange={handleChange}
                   />
                 </div>
+
+                <div className="pt-3">
+                    <Selector
+                      label="Select Martial Status"
+                      value={addUser.personalMartialStatus}
+                      onChange={handleMartialChange}
+                      option={martialStatusData}
+                    />
+                  </div>
 
                 <div className="form-group my-2">
                   <NormalInput

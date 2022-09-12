@@ -6,6 +6,11 @@
       "phNo": "Phone Number",
       "techStack": "Select TechStacks",
       "gender": "Select Gender",
-      "martialStatus": "Select Martial Status"
+      "martialStatus": "Select Martial Status",
+      "doc": "Drop your documents"
+    },
+    "sidebar": {
+       "titleOne": "General Profile",
+       "titleTwo": "User Profile"
     }
 }    

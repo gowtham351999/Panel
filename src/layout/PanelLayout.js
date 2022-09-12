@@ -13,7 +13,7 @@ export const PanelLayout = ({ children }) => {
 
   const hide = getAdmin === "jojo" ? true : false;
 
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const selectedLanguage = useSelector((data) => data.commonStore.fileData);
 
@@ -31,7 +31,7 @@ export const PanelLayout = ({ children }) => {
       id: 0,
       to: "/dashboard/view",
       navContent: "/dashboard",
-      label: "GeneralProfile",
+      label: t("sidebar.titleOne"),
       iconName: <HiUsers className="text-light fs-20" />,
       hideLabel: hide,
     },
@@ -39,7 +39,7 @@ export const PanelLayout = ({ children }) => {
       id: 1,
       to: "/user/user-add",
       navContent: "/user",
-      label: "UserProfile",
+      label: t("sidebar.titleTwo"),
       iconName: <ImUserTie className="text-light fs-20" />,
       hideLabel: hide,
     },

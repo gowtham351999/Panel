@@ -333,7 +333,7 @@ export const PersonalAdd = () => {
 
                   <div>
                     <label className="text-light mb-0">
-                      Drop your documents
+                    {t("formHeader.doc")}
                     </label>
                     <Dropzone onDrop={onDrop} minSize={10000}>
                       {({ getRootProps, getInputProps }) => (

@@ -57,9 +57,7 @@ export const Register = () => {
   };
 
   const sendRegisterData = async () => {
-    if (formError.allow) {
-      await axios.post("http://localhost:3003/users", registerUser);
-    }
+    await axios.post("http://localhost:3003/users", registerUser);
   };
 
   const handleRegisterSubmit = async () => {

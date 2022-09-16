@@ -6,6 +6,7 @@ import { SelectComponent } from "component/common/SelectComponent";
 import { Selector } from "component/common/Selector";
 import React, { useCallback, useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
+import { useTranslation } from "react-i18next";
 import { MdOutlineRemoveCircle } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import "./style.scss";
@@ -22,8 +23,8 @@ export const Add = () => {
     status: "Male",
     approvalStatus: false,
     personalMartialStatus: "Single",
-    stringOne:'Approved',
-    stringTwo:'Disapproved'
+    stringOne: "Approved",
+    stringTwo: "Disapproved",
   });
 
   const [option, setOption] = useState([]);
@@ -31,6 +32,8 @@ export const Add = () => {
   const [files, setFiles] = useState([]);
 
   const [showPreview, setShowPreview] = useState(false);
+
+  const { t } = useTranslation();
 
   const myOptions = [
     {
@@ -231,14 +234,14 @@ export const Add = () => {
             <div className="addUser-BoxContainer pt-5 pb-4 px-5">
               <div className="addUser-title-box">
                 <h3 className="text-danger add-title fs-32 fw-800  text-center p-3">
-                  Add User{" "}
+                  {t("formHeader.formTitle")}
                 </h3>
               </div>
               <form className="my-4">
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="First Name"
+                    label={t("formHeader.firstName")}
                     name="name"
                     value={addUser.name}
                     onChange={handleChange}
@@ -247,7 +250,7 @@ export const Add = () => {
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="Username"
+                    label={t("formHeader.userName")}
                     name="username"
                     value={addUser.username}
                     onChange={handleChange}
@@ -256,7 +259,7 @@ export const Add = () => {
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="Website"
+                    label={t("formHeader.website")}
                     name="website"
                     value={addUser.website}
                     onChange={handleChange}
@@ -266,7 +269,7 @@ export const Add = () => {
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="State"
+                    label={t("formHeader.state")}
                     name="city"
                     value={addUser?.city}
                     onChange={handleChange}
@@ -274,24 +277,26 @@ export const Add = () => {
                 </div>
 
                 <div className="pt-3">
-                    <Selector
-                      label="Select Martial Status"
-                      value={addUser.personalMartialStatus}
-                      onChange={handleMartialChange}
-                      option={martialStatusData}
-                    />
-                  </div>
+                  <Selector
+                    label={t("formHeader.martialStatus")}
+                    value={addUser.personalMartialStatus}
+                    onChange={handleMartialChange}
+                    option={martialStatusData}
+                  />
+                </div>
 
                 <div className="form-group my-2">
                   <NormalInput
                     type="tel"
-                    label="Phone Number"
+                    label={t("formHeader.phNo")}
                     name="phone"
                     value={addUser.phone}
                     onChange={handleChange}
                   />
                   <div className="pt-3">
-                    <label className="text-light">Select TechStacks</label>
+                    <label className="text-light">
+                      {t("formHeader.techStack")}
+                    </label>
                     <div className="select-container">
                       <SelectComponent
                         options={myOptions}
@@ -316,7 +321,9 @@ export const Add = () => {
                   </div>
 
                   <div className="pt-3">
-                    <label className="text-light">Select Status</label>
+                    <label className="text-light">
+                      {t("formHeader.gender")}
+                    </label>
                     <Selector
                       name="status"
                       value={addUser.status}
@@ -327,7 +334,7 @@ export const Add = () => {
 
                   <div>
                     <label className="text-light mb-0">
-                      Drop your documents
+                      {t("formHeader.doc")}
                     </label>
                     <Dropzone onDrop={onDrop} minSize={10000}>
                       {({ getRootProps, getInputProps }) => (
@@ -399,7 +406,7 @@ export const Add = () => {
                       onClick={handleSubmit}
                       className="addUserBtn fs-22 fw-700 mt-4 mx-auto d-block p-3 px-5"
                     >
-                      Add New User
+                      {t("formHeader.addUser")}
                     </button>
                   </div>
                 </div>

@@ -1,22 +1,26 @@
 {
   "users": [
     {
-      "name": "ramu",
-      "username": "bala",
+      "name": "Gowtham.S Suresh",
+      "username": "gowtham",
       "website": "www.knju.com",
-      "city": "Tamil Nadu",
-      "phone": "9656534466",
+      "city": "Chennai",
+      "phone": "0861 003 4427",
       "stack": [
         {
           "value": 4,
           "label": "TypeScript"
+        },
+        {
+          "value": 2,
+          "label": "NodeJS"
         }
       ],
       "fileType": {
         "file": [
           {
-            "path": "3.png",
-            "preview": "blob:http://localhost:3000/276e9dd8-4f61-4324-bc59-0b1a2b94da1e"
+            "path": "Blog 1.png",
+            "preview": "blob:http://localhost:3001/07f5e689-a8b4-4bf9-984a-2170649d02c1"
           }
         ]
       },
@@ -26,6 +30,28 @@
       "stringOne": "Approved",
       "stringTwo": "Disapproved",
       "id": 1
+    },
+    {
+      "name": "ksks",
+      "username": "ksksk",
+      "website": "www.knju.com",
+      "city": "Tamil Nadu",
+      "phone": "9656534421",
+      "stack": [
+        {
+          "value": 3,
+          "label": "JavaScript"
+        }
+      ],
+      "fileType": {
+        "file": []
+      },
+      "status": "Male",
+      "approvalStatus": false,
+      "personalMartialStatus": "Single",
+      "stringOne": "Approved",
+      "stringTwo": "Disapproved",
+      "id": 2
     }
   ]
 }

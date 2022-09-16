@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NormalInput } from "component/common/NormalInput";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiFillDelete } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { MdModeEdit } from "react-icons/md";
@@ -11,6 +12,8 @@ export const View = () => {
   const [datum, setDatum] = useState([]);
 
   const [search, setSearch] = useState("");
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     loadUserData();
@@ -46,7 +49,7 @@ export const View = () => {
 
   let userApprovalData = JSON.parse(localStorage.getItem("userApproval"));
 
-  console.log(userApprovalData, "sjjs");
+  console.log(userApprovalData, "approvaldata");
 
   return (
     <>
@@ -69,39 +72,39 @@ export const View = () => {
             <div>
               <div className="detail-Box">
                 <p className="fs-32 fw-800 text-light text-center userDetailHeader pt-5">
-                  User Details
+                  {t("userTable.tableTitle")}
                 </p>
                 <div className="row p-3">
                   <div className="col-1">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      S.No
+                      {t("userTable.sno")}
                     </p>
                   </div>
                   <div className="col-1">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      Name
+                      {t("userTable.Name")}
                     </p>
                   </div>
                   <div className="col-2">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      File
+                      {t("userTable.file")}
                     </p>
                   </div>
                   <div className="col-2">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      Tech Stacks
+                      {t("userTable.techStack")}
                     </p>
                   </div>
                   <div className="col-4">
                     <p className="text-warning fs-22 fw-800 userDetailTitle">
-                      Phone Number
+                      {t("userTable.phnNo")}
                     </p>
                   </div>
                 </div>
 
                 {datum && datum.length <= 0 ? (
                   <p className="text-warning text-center fw-800">
-                    No result found....!
+                    {t("userTable.noResult")}
                   </p>
                 ) : (
                   <>

@@ -3,14 +3,29 @@
       "formTitle": "Add User",
       "firstName": "First Name",
       "userName": "Username",
+      "website": "Website",
+      "state":"State",
       "phNo": "Phone Number",
       "techStack": "Select TechStacks",
       "gender": "Select Gender",
       "martialStatus": "Select Martial Status",
-      "doc": "Drop your documents"
+      "doc": "Drop your documents",
+      "addUser":"Add New User",
+      "editUser":"Edit User",
+      "updateUser":"Update User"
     },
     "sidebar": {
        "titleOne": "General Profile",
        "titleTwo": "User Profile"
+    },
+    "userTable": {
+      "tableTitle": "User Details",
+      "sno": "S.No",
+      "Name": "Name",
+      "file": "File",
+      "techStack":"Tech Stacks",
+      "phnNo":"Phone Number",
+      "noResult":"No result found....!",
+      "downloadUser":"Download Profile"
     }
 }    

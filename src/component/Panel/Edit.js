@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NormalInput } from "component/common/NormalInput";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useHistory, useParams } from "react-router-dom";
 import "./style.scss";
 
@@ -16,6 +17,8 @@ export const Edit = () => {
   const history = useHistory();
 
   const { id } = useParams();
+
+  const { t } = useTranslation();
 
   //handle Change
   const handleChange = (e) => {
@@ -48,14 +51,14 @@ export const Edit = () => {
             <div className="addUser-BoxContainer pt-5 pb-4 px-5">
               <div className="addUser-title-box">
                 <h3 className="text-danger add-title fs-32 fw-800  text-center p-3">
-                  Edit User{" "}
+                {t("formHeader.editUser")}
                 </h3>
               </div>
               <form className="my-4">
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="First Name"
+                    label={t("formHeader.firstName")}
                     name="name"
                     value={addUser.name}
                     onChange={handleChange}
@@ -64,7 +67,7 @@ export const Edit = () => {
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="Username"
+                    label={t("formHeader.userName")}
                     name="username"
                     value={addUser.username}
                     onChange={handleChange}
@@ -73,7 +76,7 @@ export const Edit = () => {
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="Website"
+                    label={t("formHeader.website")}
                     name="website"
                     value={addUser.website}
                     onChange={handleChange}
@@ -82,7 +85,7 @@ export const Edit = () => {
                 <div className="form-group my-2">
                   <NormalInput
                     type="text"
-                    label="Phone Number"
+                    label={t("formHeader.phNo")}
                     name="phone"
                     value={addUser.phone}
                     onChange={handleChange}
@@ -92,7 +95,7 @@ export const Edit = () => {
                       onClick={handleSubmit}
                       className="addUserBtn fs-22 fw-700 mt-4 mx-auto d-block p-3 px-5"
                     >
-                      Update User
+                      {t("formHeader.updateUser")}
                     </button>
                   </div>
                 </div>

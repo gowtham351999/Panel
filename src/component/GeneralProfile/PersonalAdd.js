@@ -411,7 +411,7 @@ export const PersonalAdd = () => {
                       onClick={handleSubmit}
                       className="addUserBtn fs-22 fw-700 mt-4 mx-auto d-block p-3 px-5"
                     >
-                      Add New User
+                      {t("formHeader.addUser")}
                     </button>
                   </div>
                 </div>

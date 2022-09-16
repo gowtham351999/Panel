@@ -1,6 +1,7 @@
 import axios from "axios";
 import FileSaver from "file-saver";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiFillBackward } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { history } from "service/helpers";
@@ -11,6 +12,8 @@ export const PersonalView = () => {
 
   const { id } = useParams();
 
+  const { t } = useTranslation();
+
   const loadUserData = async () => {
     await axios.get(`http://localhost:3003/users/${id}`).then((data) => {
       setViewData(data?.data);
@@ -19,7 +22,7 @@ export const PersonalView = () => {
 
   const exportData = () => {
     let blob = new Blob([JSON.stringify(viewData)], {
-      type: "text/plain;charset=utf-8"
+      type: "text/plain;charset=utf-8",
     });
     FileSaver.saveAs(blob, "UserProfile.doc");
   };
@@ -38,18 +41,24 @@ export const PersonalView = () => {
                 <span onClick={() => history.push("/dashboard/view")}>
                   <AiFillBackward className="text-warning cursor-pointer" />
                 </span>{" "}
-                User Details
+                {t("userTable.tableTitle")}
               </p>
               <div className="d-flex justify-content-between">
                 <div>
-                  <p className="text-warning text-left fw-400">Name :</p>
-                  <p className="text-warning text-left fw-400">Username :</p>
-                  <p className="text-warning text-left fw-400">Website :</p>
+                  <p className="text-warning text-left fw-400">
+                    {t("userTable.Name")} :
+                  </p>
+                  <p className="text-warning text-left fw-400">
+                    {t("formHeader.userName")} :
+                  </p>
+                  <p className="text-warning text-left fw-400">
+                    {t("formHeader.website")} :
+                  </p>
                   <p className="text-warning text-left fw-400 mb-0 pb-3">
-                    Phone-Number :
+                    {t("userTable.phnNo")} :
                   </p>
                   <p className="text-warning text-left fw-400 mb-0">
-                    Tech-Stacks :
+                    {t("userTable.techStack")} :
                   </p>
                 </div>
                 <div>
@@ -76,7 +85,10 @@ export const PersonalView = () => {
               </div>
               <div className="d-flex justify-content-center pt-3">
                 <div>
-                  <button className="btn btn-success p-2 text-light" onClick={exportData}>
+                  <button
+                    className="btn btn-success p-2 text-light"
+                    onClick={exportData}
+                  >
                     Download Profile
                   </button>
                 </div>

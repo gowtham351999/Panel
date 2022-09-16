@@ -1,6 +1,7 @@
 import { fileHandler } from "action/PanelAct";
 import FileSaver from "file-saver";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiFillBackward } from "react-icons/ai";
 import { FaUserEdit } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -26,6 +27,8 @@ export const PersonalProfileView = () => {
   const getViewData = useLocation();
 
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (getViewData) {
@@ -64,21 +67,27 @@ export const PersonalProfileView = () => {
                 <span onClick={() => history.push("/dashboard/view")}>
                   <AiFillBackward className="text-warning cursor-pointer" />
                 </span>{" "}
-                User Details
+                {t("userTable.tableTitle")}
               </p>
               <div className="d-flex justify-content-between">
                 <div>
-                  <p className="text-warning text-left fw-400">Name :</p>
-                  <p className="text-warning text-left fw-400">Username :</p>
-                  <p className="text-warning text-left fw-400">Gender :</p>
-                  <p className="text-warning text-left fw-400 mb-0 pb-3">
-                    Phone-Number :
+                  <p className="text-warning text-left fw-400">
+                    {t("userTable.Name")} :
+                  </p>
+                  <p className="text-warning text-left fw-400">
+                    {t("formHeader.userName")} :
+                  </p>
+                  <p className="text-warning text-left fw-400">
+                    {t("formHeader.gender")} :
                   </p>
                   <p className="text-warning text-left fw-400 mb-0 pb-3">
-                    File :
+                    {t("formHeader.phNo")} :
+                  </p>
+                  <p className="text-warning text-left fw-400 mb-0 pb-3">
+                    {t("userTable.file")} :
                   </p>
                   <p className="text-warning text-left fw-400 mb-0">
-                    Tech-Stacks :
+                    {t("userTable.techStack")} :
                   </p>
                 </div>
                 <div>
@@ -119,7 +128,7 @@ export const PersonalProfileView = () => {
                     className="btn btn-success p-2 text-light"
                     onClick={exportData}
                   >
-                    Download Profile
+                    {t("userTable.downloadUser")}
                   </button>
                 </div>
               </div>

@@ -29,7 +29,6 @@ const routers = [
       },
     ],
   },
-
   {
     component: "PanelLayout",
     path: "/dashboard",
@@ -71,9 +70,6 @@ const routers = [
       },
     ],
   },
-
-
-
   {
     component: "PanelLayout",
     path: "/user",
@@ -94,6 +90,23 @@ const routers = [
         path: "/user-view",
         componentPath: "pages/GeneralProfile/PersonalProfileViewPage.js",
         name: "PersonalProfileViewPage",
+        auth: false,
+        exact: true,
+      },
+    ],
+  },
+  {
+    component: "MainLayout",
+    path: "/snake",
+    auth: false,
+    name: "MainLayout",
+    exact: false,
+    childrens: [
+      {
+        component: "SnakeGamePage",
+        path: "/",
+        componentPath: "pages/SnakeGame/SnakeGamePage/SnakeGamePage.js",
+        name: "SnakeGamePage",
         auth: false,
         exact: true,
       },

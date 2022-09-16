@@ -7,7 +7,6 @@
     }
   },
   "include": [
-    "src",
-    "src/component/MediaCenter/MobilePages/MediaCenterNewsMobile/Tawniya.js"
+    "src"
   ]
 }

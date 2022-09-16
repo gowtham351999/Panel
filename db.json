@@ -1,57 +1,28 @@
 {
   "users": [
     {
-      "name": "Gowtham.S Suresh",
-      "username": "gowtham",
-      "website": "www.knju.com",
-      "city": "Chennai",
-      "phone": "0861 003 4427",
-      "stack": [
-        {
-          "value": 4,
-          "label": "TypeScript"
-        },
-        {
-          "value": 2,
-          "label": "NodeJS"
-        }
-      ],
-      "fileType": {
-        "file": [
-          {
-            "path": "Blog 1.png",
-            "preview": "blob:http://localhost:3001/07f5e689-a8b4-4bf9-984a-2170649d02c1"
-          }
-        ]
-      },
-      "status": "Male",
-      "approvalStatus": false,
-      "personalMartialStatus": "Single",
-      "stringOne": "Approved",
-      "stringTwo": "Disapproved",
+      "userName": "seenu",
+      "passWord": "1234",
+      "emailId": "Avinesh123@gmail.com",
       "id": 1
     },
     {
-      "name": "ksks",
-      "username": "ksksk",
-      "website": "www.knju.com",
-      "city": "Tamil Nadu",
-      "phone": "9656534421",
-      "stack": [
-        {
-          "value": 3,
-          "label": "JavaScript"
-        }
-      ],
-      "fileType": {
-        "file": []
-      },
-      "status": "Male",
-      "approvalStatus": false,
-      "personalMartialStatus": "Single",
-      "stringOne": "Approved",
-      "stringTwo": "Disapproved",
+      "userName": "ramu",
+      "passWord": "7654",
+      "emailId": "sundaj@doodleblue.com",
       "id": 2
+    },
+    {
+      "userName": "lalli",
+      "passWord": "4367",
+      "emailId": "sundararaj@doodleblue.com",
+      "id": 3
+    },
+    {
+      "userName": "ramu",
+      "passWord": "7654",
+      "emailId": "Avinesh123@gmail.com",
+      "id": 4
     }
   ]
 }

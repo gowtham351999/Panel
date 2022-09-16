@@ -18,6 +18,7 @@ export const NormalInput = ({
   icon,
   errorMessage = "",
   maxLength,
+  ref,
 }) => {
   return (
     <>
@@ -29,6 +30,7 @@ export const NormalInput = ({
           <input
             className={`${className} form-control form-control-lg w-100`}
             name={name}
+            ref={ref}
             type={type}
             disabled={disabled}
             value={value}

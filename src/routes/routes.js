@@ -20,6 +20,14 @@ const routers = [
         exact: true,
       },
       {
+        component: "ForgotPasswordPage",
+        path: "/forgot-password/:id",
+        componentPath: "pages/Authenticator/ForgotPasswordPage.js",
+        name: "ForgotPasswordPage",
+        auth: false,
+        exact: true,
+      },
+      {
         component: "RegisterPage",
         path: "/register",
         componentPath: "pages/Authenticator/RegisterPage.js",

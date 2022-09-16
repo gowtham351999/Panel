@@ -11,6 +11,8 @@ export const Login = () => {
     passWord: "",
   });
 
+  const [userDatum, setUserDatum] = useState({ id: "" });
+
   const [formError, setFormError] = useState({
     userName: "",
     passWord: "",
@@ -120,6 +122,19 @@ export const Login = () => {
   //   });
   // };
 
+  const getUserId = async () => {
+    await axios.get("http://localhost:3003/users").then((data) => {
+      return data?.data?.find((i) => {
+        if (i.userName === loginUser.userName) {
+          setUserDatum({ ...userDatum, id: i.id });
+          if (userDatum.id === i.id) {
+            history.push(`/home/forgot-password/${userDatum.id}`);
+          }
+        }
+      });
+    });
+  };
+
   return (
     <div className="row">
       <Toaster />
@@ -154,6 +169,18 @@ export const Login = () => {
                   {formError.passWord && (
                     <p className="text-danger">{formError.passWord}</p>
                   )}
+                </div>
+              </div>
+              <div className="col-12">
+                <div className="d-flex justify-content-end">
+                  <div>
+                    <p
+                      className="text-light fw-800 m-0 cursor-pointer"
+                      onClick={getUserId}
+                    >
+                      forgot password?
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="col-12">

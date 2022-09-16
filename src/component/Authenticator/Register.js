@@ -1,6 +1,8 @@
 import axios from "axios";
 import { NormalInput } from "component/common/NormalInput";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { history } from "service/helpers";
 import "./style.scss";
 
 export const Register = () => {
@@ -24,6 +26,8 @@ export const Register = () => {
     const { name, value } = e.target || e || {};
     setRegisterUser({ ...registerUser, [name]: value });
   };
+
+  const notify = (value) => toast(value);
 
   // const AddRegister = (e) =>{
   //   e.preventDefault();
@@ -58,6 +62,7 @@ export const Register = () => {
 
   const sendRegisterData = async () => {
     await axios.post("http://localhost:3003/users", registerUser);
+    history.push('/home/login');
   };
 
   const handleRegisterSubmit = async () => {
@@ -70,7 +75,7 @@ export const Register = () => {
             item.passWord === registerUser.passWord) ||
           (!registerUser.userName && !registerUser.passWord)
         ) {
-          console.log("failed!");
+          notify("failed!");
         }
       });
     });
@@ -78,6 +83,7 @@ export const Register = () => {
 
   return (
     <div className="row">
+      <Toaster />
       <div className="col-12">
         <div className="d-flex justify-content-center align-items-center vh-100">
           <div>
